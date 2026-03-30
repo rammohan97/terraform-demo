@@ -1,12 +1,14 @@
 # Creating EC2 Instance
 resource "aws_instance" "terraform_instance" {
+    for_each = toset(var.instances)
     ami = var.ami_id  
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.allow-all.id]    
-    count=4   
+    #count=4   
 
     tags = {
-      Name = var.instances[count.index]
+     # Name = var.instances[count.index]
+       Name = each.value
       Terraform = "True"
     }
 }

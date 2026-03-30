@@ -22,7 +22,7 @@ variable "cidr" {
 variable "ec2_tags" {
   type = map
   default = {
-    Name = "Terraform-Demo"
+    Name = "Terraform-Demo-1"
     Terraform = "True"
     Environment = "Development"
     Project = "Terraform-Demo-Project"
@@ -66,5 +66,10 @@ variable "protocol" {
 }
 
 variable "instances" {
-  default = ["mongodb", "redis", "mysql", "rabbitmq"] 
+    default = ["mongodb-demo", "redis", "mysql", "rabbitmq"] 
+  # default = {
+  #   mongodb = "t3.micro",
+  #   redis = "t3.micro",
+  #   mysql = "t3.micro"
+  # }
 }
